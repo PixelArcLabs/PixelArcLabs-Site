@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<BaseLayout
+  title="Contact — Pixel Arc Labs"
+  description="Get in touch with Pixel Arc Labs for app support and general inquiries."
+  path="/contact"
+>
+  <section class="mx-auto max-w-3xl px-6 py-16 sm:py-24">
+    <header>
+      <p class="text-sm font-medium tracking-wide text-accent uppercase">Contact</p>
+      <h1 class="mt-4 text-3xl font-bold tracking-tight text-text sm:text-4xl">
+        Get in touch
+      </h1>
+      <p class="mt-4 max-w-xl text-lg leading-relaxed text-text-muted">
+        Have a question about a Pixel Arc Labs app? Send us a message and we'll get back
+        to you within one business day.
+      </p>
+    </header>
+
+    <div class="mt-12">
+      <ContactForm />
+    </div>
+  </section>
+</BaseLayout>

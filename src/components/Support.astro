@@ -1,5 +1,5 @@
 ---
-const supportEmail = 'hello@pixelarclabs.com';
+import { supportEmail } from '../config/site';
 ---
 
 <section id="support" class="border-t border-border/40 bg-bg-elevated/50">
@@ -12,16 +12,37 @@ const supportEmail = 'hello@pixelarclabs.com';
     </p>
 
     <div class="mt-8 rounded-2xl border border-border bg-bg-muted p-8">
-      <p class="text-sm text-text-muted">Reach us at</p>
+      <p class="text-sm text-text-muted">Send us a message</p>
       <a
-        href={`mailto:${supportEmail}`}
-        class="mt-2 inline-block text-2xl font-semibold text-text transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-muted rounded-sm"
+        href="/contact"
+        class="mt-2 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-muted"
       >
-        {supportEmail}
+        Contact us
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
       </a>
       <p class="mt-4 text-sm leading-relaxed text-text-muted">
-        We typically respond within one business day. Please include the app name and a
-        brief description of your question so we can help you faster.
+        Or email us directly at{' '}
+        <a
+          href={`mailto:${supportEmail}`}
+          class="text-accent transition-colors hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+        >
+          {supportEmail}
+        </a>
+        . We typically respond within one business day.
       </p>
     </div>
   </div>

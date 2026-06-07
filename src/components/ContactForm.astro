@@ -1,0 +1,109 @@
+---
+import { supportEmail } from '../config/site';
+---
+
+<div id="form-success" class="hidden rounded-2xl border border-border bg-bg-muted p-8 text-center">
+  <p class="text-lg font-semibold text-text">Thanks for reaching out.</p>
+  <p class="mt-2 text-text-muted">We'll get back to you within one business day.</p>
+</div>
+
+<form
+  id="contact-form"
+  name="contact"
+  method="POST"
+  action="/contact?success=true"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  class="space-y-6"
+>
+  <input type="hidden" name="form-name" value="contact" />
+
+  <p class="hidden" aria-hidden="true">
+    <label>
+      Don't fill this out:
+      <input name="bot-field" tabindex="-1" autocomplete="off" />
+    </label>
+  </p>
+
+  <div>
+    <label for="name" class="block text-sm font-medium text-text">Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+      autocomplete="name"
+      class="mt-2 w-full rounded-xl border border-border bg-bg-elevated px-4 py-3 text-text placeholder:text-text-muted/50 transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
+      placeholder="Your name"
+    />
+  </div>
+
+  <div>
+    <label for="email" class="block text-sm font-medium text-text">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      autocomplete="email"
+      class="mt-2 w-full rounded-xl border border-border bg-bg-elevated px-4 py-3 text-text placeholder:text-text-muted/50 transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
+      placeholder="you@example.com"
+    />
+  </div>
+
+  <div>
+    <label for="message" class="block text-sm font-medium text-text">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      required
+      rows="5"
+      class="mt-2 w-full resize-y rounded-xl border border-border bg-bg-elevated px-4 py-3 text-text placeholder:text-text-muted/50 transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
+      placeholder="How can we help?"
+    ></textarea>
+  </div>
+
+  <button
+    type="submit"
+    class="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+  >
+    Send message
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M5 12h14"></path>
+      <path d="m12 5 7 7-7 7"></path>
+    </svg>
+  </button>
+</form>
+
+<p class="mt-8 text-sm text-text-muted">
+  Prefer email?{' '}
+  <a
+    href={`mailto:${supportEmail}`}
+    class="text-accent transition-colors hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+  >
+    {supportEmail}
+  </a>
+</p>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('success') === 'true') {
+    const form = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+    if (form && success) {
+      form.classList.add('hidden');
+      success.classList.remove('hidden');
+    }
+  }
+</script>
