@@ -83,4 +83,32 @@
       transform: translateY(0);
     }
   }
+
+  .glass-pill {
+    border: 1px solid color-mix(in srgb, white 12%, transparent);
+    background: color-mix(in srgb, var(--color-bg-elevated) 55%, transparent);
+    box-shadow:
+      0 4px 24px color-mix(in srgb, black 35%, transparent),
+      inset 0 1px 0 color-mix(in srgb, white 8%, transparent);
+    -webkit-backdrop-filter: blur(20px) saturate(1.6);
+    backdrop-filter: blur(20px) saturate(1.6);
+  }
+
+  .floating-nav {
+    transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  .floating-nav.is-hidden {
+    transform: translateY(calc(-100% - 1.25rem));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .floating-nav {
+      transition: none;
+    }
+
+    .floating-nav.is-hidden {
+      transform: none;
+    }
+  }
 }

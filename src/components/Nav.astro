@@ -1,37 +1,165 @@
 ---
-const links = [
+const navLinks = [
   { href: '/#about', label: 'About' },
   { href: '/#support', label: 'Support' },
-  { href: '/contact', label: 'Contact' },
-  { href: '/privacy', label: 'Privacy' },
 ];
+
+const linkClass =
+  'text-sm text-text-muted transition-colors hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full px-1';
 ---
 
-<header class="sticky top-0 z-40 border-b border-border/60 bg-bg/80 backdrop-blur-md">
+<header
+  id="floating-nav"
+  class="floating-nav pointer-events-none fixed inset-x-0 top-0 z-50 pt-4 sm:pt-5"
+>
+  <!-- Mobile: single glass bar -->
   <nav
-    class="mx-auto flex max-w-3xl items-center justify-between px-6 py-4"
+    class="glass-pill pointer-events-auto mx-4 flex items-center justify-between gap-2 rounded-full px-3 py-2 sm:mx-6 md:hidden"
     aria-label="Main navigation"
   >
     <a
       href="/"
-      class="text-sm font-semibold tracking-tight text-text transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg rounded-sm"
+      class="flex shrink-0 items-center justify-center rounded-full p-1.5 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      aria-label="Pixel Arc Labs home"
     >
-      Pixel Arc Labs
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 32 32"
+        fill="none"
+        class="h-7 w-7"
+        aria-hidden="true"
+      >
+        <rect width="32" height="32" rx="8" fill="#12121a"></rect>
+        <path
+          d="M8 22 C8 14, 14 8, 22 8"
+          stroke="#1e74bd"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          fill="none"></path>
+        <rect x="20" y="18" width="4" height="4" rx="1" fill="#1e74bd"></rect>
+        <rect x="14" y="18" width="4" height="4" rx="1" fill="#1e74bd" opacity="0.6"
+        ></rect>
+        <rect x="8" y="18" width="4" height="4" rx="1" fill="#1e74bd" opacity="0.3"></rect>
+      </svg>
     </a>
 
-    <ul class="flex items-center gap-6">
+    <ul class="flex min-w-0 flex-1 items-center justify-center gap-3">
       {
-        links.map((link) => (
+        navLinks.map((link) => (
           <li>
-            <a
-              href={link.href}
-              class="text-sm text-text-muted transition-colors hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg rounded-sm"
-            >
+            <a href={link.href} class={linkClass}>
               {link.label}
             </a>
           </li>
         ))
       }
+      <li>
+        <a href="/privacy" class={linkClass}>Privacy</a>
+      </li>
     </ul>
+
+    <a
+      href="/contact"
+      class="shrink-0 rounded-full bg-white/10 px-3 py-1.5 text-sm font-medium text-text transition-colors hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+    >
+      Contact
+    </a>
   </nav>
+
+  <!-- Desktop: three floating islands -->
+  <div
+    class="pointer-events-none mx-auto hidden max-w-4xl items-center justify-between gap-4 px-6 md:flex"
+  >
+    <nav
+      class="glass-pill pointer-events-auto flex items-center gap-1 rounded-full px-2 py-2"
+      aria-label="Site sections"
+    >
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="rounded-full px-4 py-1.5 text-sm text-text-muted transition-colors hover:bg-white/5 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <a
+      href="/"
+      class="glass-pill pointer-events-auto flex items-center justify-center rounded-full p-2.5 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      aria-label="Pixel Arc Labs home"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 32 32"
+        fill="none"
+        class="h-9 w-9"
+        aria-hidden="true"
+      >
+        <rect width="32" height="32" rx="8" fill="#12121a"></rect>
+        <path
+          d="M8 22 C8 14, 14 8, 22 8"
+          stroke="#1e74bd"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          fill="none"></path>
+        <rect x="20" y="18" width="4" height="4" rx="1" fill="#1e74bd"></rect>
+        <rect x="14" y="18" width="4" height="4" rx="1" fill="#1e74bd" opacity="0.6"
+        ></rect>
+        <rect x="8" y="18" width="4" height="4" rx="1" fill="#1e74bd" opacity="0.3"></rect>
+      </svg>
+    </a>
+
+    <nav
+      class="glass-pill pointer-events-auto flex items-center gap-1 rounded-full px-2 py-2"
+      aria-label="Site actions"
+    >
+      <a
+        href="/privacy"
+        class="rounded-full px-4 py-1.5 text-sm text-text-muted transition-colors hover:bg-white/5 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      >
+        Privacy
+      </a>
+      <a
+        href="/contact"
+        class="rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-text transition-colors hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      >
+        Contact
+      </a>
+    </nav>
+  </div>
 </header>
+
+<script>
+  const nav = document.getElementById('floating-nav');
+  if (nav && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    const updateNav = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 72) {
+        nav.classList.add('is-hidden');
+      } else {
+        nav.classList.remove('is-hidden');
+      }
+
+      lastScrollY = currentScrollY;
+      ticking = false;
+    };
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateNav);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+  }
+</script>
