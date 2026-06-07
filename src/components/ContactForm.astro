@@ -4,7 +4,7 @@ import { supportEmail } from '../config/site';
 
 <div id="form-success" class="hidden rounded-2xl border border-border bg-bg-muted p-8 text-center">
   <p class="text-lg font-semibold text-text">Thanks for reaching out.</p>
-  <p class="mt-2 text-text-muted">We'll get back to you within one business day.</p>
+  <p class="mt-2 text-text-muted">We'll be in touch shortly.</p>
 </div>
 
 <form
@@ -88,12 +88,14 @@ import { supportEmail } from '../config/site';
 
 <p class="mt-8 text-sm text-text-muted">
   Prefer email?{' '}
-  <a
-    href={`mailto:${supportEmail}`}
-    class="text-accent transition-colors hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+  <button
+    type="button"
+    id="copy-email"
+    class="text-accent transition-colors hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm cursor-pointer"
   >
     {supportEmail}
-  </a>
+  </button>
+  <span id="copy-feedback" class="ml-2 hidden text-text-muted" aria-live="polite">Copied!</span>
 </p>
 
 <script>
@@ -105,5 +107,20 @@ import { supportEmail } from '../config/site';
       form.classList.add('hidden');
       success.classList.remove('hidden');
     }
+  }
+
+  const copyBtn = document.getElementById('copy-email');
+  const copyFeedback = document.getElementById('copy-feedback');
+  if (copyBtn && copyFeedback) {
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(copyBtn.textContent?.trim() ?? '');
+        copyFeedback.classList.remove('hidden');
+        setTimeout(() => copyFeedback.classList.add('hidden'), 2000);
+      } catch {
+        copyFeedback.textContent = 'Copy failed — select the address manually';
+        copyFeedback.classList.remove('hidden');
+      }
+    });
   }
 </script>
