@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { companyName, supportEmail } from '../config/site';
 
-const lastUpdated = 'June 6, 2025';
+const lastUpdated = 'June 7, 2026';
 ---
 
 <BaseLayout
@@ -87,13 +87,19 @@ const lastUpdated = 'June 6, 2025';
         <h2 class="text-xl font-semibold text-text">How I store and protect data</h2>
         <p class="mt-4">
           I take reasonable measures to protect your information using industry-standard
-          security practices. Data may be stored on your device, on servers I use, or with
-          trusted service providers that help me operate my apps.
+          security practices. Data may be stored on your device, or securely hosted on
+          cloud infrastructure located in the United States.
         </p>
         <p class="mt-4">
           I retain information only as long as needed to provide my services, comply
-          with legal requirements, or resolve disputes. You may request deletion of your
-          account and associated data by contacting me.
+          with legal requirements, or resolve disputes. You can delete your account and
+          associated data directly within the app's settings, or by contacting me at{' '}
+          <a
+            href={`mailto:${supportEmail}`}
+            class="text-accent transition-colors hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+          >
+            {supportEmail}
+          </a>.
         </p>
       </section>
 
@@ -104,6 +110,12 @@ const lastUpdated = 'June 6, 2025';
           hosting, authentication, analytics, or payment providers — to deliver core
           functionality. These services process data according to their own privacy
           policies.
+        </p>
+        <p class="mt-4">
+          For in-app purchases and subscriptions, payment processing is handled securely
+          by Apple. I use third-party services to manage subscription access, but{' '}
+          {companyName} does not collect, process, or store your raw payment details
+          (like credit card numbers).
         </p>
         <p class="mt-4">
           I choose providers carefully and limit the data shared to what is necessary for
