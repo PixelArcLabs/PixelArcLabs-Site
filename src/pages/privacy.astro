@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { supportEmail } from '../config/site';
+import { companyName, supportEmail } from '../config/site';
 
 const lastUpdated = 'June 6, 2025';
 ---
 
 <BaseLayout
-  title="Privacy Policy — Pixel Arc Labs"
-  description="Privacy Policy for Pixel Arc Labs and the mobile applications I publish."
+  title={`Privacy Policy — ${companyName}`}
+  description={`Privacy Policy for ${companyName} and the mobile applications I publish.`}
   path="/privacy"
 >
   <article class="mx-auto max-w-3xl px-6 py-16 sm:py-24">
@@ -23,7 +23,7 @@ const lastUpdated = 'June 6, 2025';
       <section>
         <h2 class="text-xl font-semibold text-text">Who I am</h2>
         <p class="mt-4">
-          Pixel Arc Labs is a one-person iOS studio. I develop and publish mobile
+          {companyName} is a one-person iOS studio. I develop and publish mobile
           applications for iPhone and iPad. This Privacy Policy describes how I collect,
           use, and protect information when you use my apps or visit my website at
           pixelarclabs.com.
@@ -42,7 +42,7 @@ const lastUpdated = 'June 6, 2025';
       <section>
         <h2 class="text-xl font-semibold text-text">Information I collect</h2>
         <p class="mt-4">
-          The information I collect depends on which Pixel Arc Labs app you use and how
+          The information I collect depends on which {companyName} app you use and how
           you interact with it. In general, my apps may collect:
         </p>
         <ul class="mt-4 list-disc space-y-2 pl-6">
@@ -100,7 +100,7 @@ const lastUpdated = 'June 6, 2025';
       <section>
         <h2 class="text-xl font-semibold text-text">Third-party services</h2>
         <p class="mt-4">
-          Some Pixel Arc Labs apps may integrate with third-party services — such as cloud
+          Some {companyName} apps may integrate with third-party services — such as cloud
           hosting, authentication, analytics, or payment providers — to deliver core
           functionality. These services process data according to their own privacy
           policies.
@@ -153,7 +153,7 @@ const lastUpdated = 'June 6, 2025';
       <section>
         <h2 class="text-xl font-semibold text-text">Contact</h2>
         <p class="mt-4">
-          Pixel Arc Labs<br />
+          {companyName}<br />
           Email:{' '}
           <a
             href={`mailto:${supportEmail}`}

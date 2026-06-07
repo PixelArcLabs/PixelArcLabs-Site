@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { companyName } from '../config/site';
 
 interface Props {
   title: string;
@@ -29,7 +30,7 @@ const canonical = new URL(path, Astro.site);
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:site_name" content="Pixel Arc Labs" />
+    <meta property="og:site_name" content={companyName} />
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
