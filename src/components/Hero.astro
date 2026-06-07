@@ -1,0 +1,48 @@
+---
+const supportEmail = 'hello@pixelarclabs.com';
+---
+
+<section class="relative overflow-hidden border-b border-border/40">
+  <div class="hero-mesh absolute inset-0" aria-hidden="true"></div>
+  <div class="pixel-grid absolute inset-0 opacity-60" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-3xl px-6 py-28 sm:py-36">
+    <p class="fade-in mb-4 text-sm font-medium tracking-wide text-accent uppercase">
+      Indie iOS studio
+    </p>
+
+    <h1 class="fade-in-delay-1 text-4xl font-bold tracking-tight text-text sm:text-5xl lg:text-6xl">
+      Thoughtful apps,<br />
+      <span class="text-text-muted">built with care.</span>
+    </h1>
+
+    <p class="fade-in-delay-2 mt-6 max-w-xl text-lg leading-relaxed text-text-muted">
+      Pixel Arc Labs designs and builds iOS applications that are clear, private, and
+      polished — tools people actually enjoy using every day.
+    </p>
+
+    <div class="fade-in-delay-3 mt-10">
+      <a
+        href={`mailto:${supportEmail}`}
+        class="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+      >
+        {supportEmail}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

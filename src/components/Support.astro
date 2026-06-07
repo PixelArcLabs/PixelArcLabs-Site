@@ -1,0 +1,28 @@
+---
+const supportEmail = 'hello@pixelarclabs.com';
+---
+
+<section id="support" class="border-t border-border/40 bg-bg-elevated/50">
+  <div class="mx-auto max-w-3xl px-6 py-24 sm:py-28">
+    <h2 class="text-sm font-medium tracking-wide text-accent uppercase">Support</h2>
+
+    <p class="mt-6 max-w-xl text-lg leading-relaxed text-text-muted">
+      Need help with a Pixel Arc Labs app? We're here. This page is the official support
+      contact for all of our applications on the App Store.
+    </p>
+
+    <div class="mt-8 rounded-2xl border border-border bg-bg-muted p-8">
+      <p class="text-sm text-text-muted">Reach us at</p>
+      <a
+        href={`mailto:${supportEmail}`}
+        class="mt-2 inline-block text-2xl font-semibold text-text transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-muted rounded-sm"
+      >
+        {supportEmail}
+      </a>
+      <p class="mt-4 text-sm leading-relaxed text-text-muted">
+        We typically respond within one business day. Please include the app name and a
+        brief description of your question so we can help you faster.
+      </p>
+    </div>
+  </div>
+</section>

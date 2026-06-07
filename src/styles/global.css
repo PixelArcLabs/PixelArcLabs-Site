@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0a0f;
+  --color-bg-elevated: #12121a;
+  --color-bg-muted: #1a1a26;
+  --color-text: #f0f0f5;
+  --color-text-muted: #9494a8;
+  --color-accent: #1e74bd;
+  --color-accent-hover: #2a8ad4;
+  --color-border: #2a2a3a;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-bg text-text font-sans antialiased;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  }
+}
+
+@layer utilities {
+  .hero-mesh {
+    background-image:
+      radial-gradient(ellipse 80% 60% at 50% -10%, color-mix(in srgb, var(--color-accent) 18%, transparent), transparent),
+      radial-gradient(ellipse 50% 40% at 80% 20%, color-mix(in srgb, #6b4ce6 12%, transparent), transparent),
+      radial-gradient(ellipse 40% 30% at 10% 60%, color-mix(in srgb, var(--color-accent) 8%, transparent), transparent);
+  }
+
+  .pixel-grid {
+    background-image:
+      linear-gradient(color-mix(in srgb, var(--color-border) 40%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, var(--color-border) 40%, transparent) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 70%);
+  }
+
+  .fade-in {
+    animation: fade-in 0.7s ease-out both;
+  }
+
+  .fade-in-delay-1 {
+    animation: fade-in 0.7s ease-out 0.1s both;
+  }
+
+  .fade-in-delay-2 {
+    animation: fade-in 0.7s ease-out 0.2s both;
+  }
+
+  .fade-in-delay-3 {
+    animation: fade-in 0.7s ease-out 0.3s both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in,
+    .fade-in-delay-1,
+    .fade-in-delay-2,
+    .fade-in-delay-3 {
+      animation: none;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
