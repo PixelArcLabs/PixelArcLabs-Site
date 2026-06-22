@@ -1,7 +1,7 @@
 ---
+import NavAppsMenu from './NavAppsMenu.astro';
 
 const navLinks = [
-  { href: '/#onyx', label: 'ONYX' },
   { href: '/#about', label: 'About' },
   { href: '/#support', label: 'Support' },
 ];
@@ -46,6 +46,9 @@ const linkClass =
     </a>
 
     <ul class="flex min-w-0 flex-1 items-center justify-center gap-3">
+      <li>
+        <NavAppsMenu variant="mobile" />
+      </li>
       {
         navLinks.map((link) => (
           <li>
@@ -76,6 +79,7 @@ const linkClass =
       class="glass-pill pointer-events-auto flex items-center gap-1 rounded-full px-2 py-2"
       aria-label="Site sections"
     >
+      <NavAppsMenu variant="desktop" />
       {
         navLinks.map((link) => (
           <a

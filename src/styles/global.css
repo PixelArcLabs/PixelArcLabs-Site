@@ -113,6 +113,22 @@
     );
   }
 
+  .nav-apps-panel.is-open {
+    pointer-events: auto;
+    scale: 1;
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-apps-panel {
+      transition: none;
+    }
+
+    .nav-apps-chevron {
+      transition: none;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .floating-nav {
       transition: none;
