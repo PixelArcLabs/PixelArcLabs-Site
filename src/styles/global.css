@@ -102,6 +102,17 @@
     transform: translateY(calc(-100% - 1.25rem));
   }
 
+  .onyx-card {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, #b8a9e8 12%, transparent),
+      0 24px 48px color-mix(in srgb, black 25%, transparent);
+    background-image: radial-gradient(
+      ellipse 80% 60% at 100% 0%,
+      color-mix(in srgb, #b8a9e8 10%, transparent),
+      transparent 55%
+    );
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .floating-nav {
       transition: none;
