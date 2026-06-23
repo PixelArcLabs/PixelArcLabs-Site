@@ -13,6 +13,7 @@ export type AppEntry = {
   iconSrc: string;
   appStoreUrl: string | null;
   privacyPath: string;
+  termsPath: string;
   features: string[];
 };
 
@@ -30,6 +31,7 @@ export const apps: AppEntry[] = [
     iconSrc: '/onyx-logo.png',
     appStoreUrl: null,
     privacyPath: '/privacy',
+    termsPath: '/terms',
     features: [
       'Bills, income, and accounts in one app',
       'Calendar and metrics at a glance',

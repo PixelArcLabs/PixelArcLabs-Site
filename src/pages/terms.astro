@@ -1,0 +1,223 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { companyName, supportEmail, onyx } from '../config/site';
+
+const lastUpdated = 'June 22, 2026';
+---
+
+<BaseLayout
+  title={`Terms of Use — ${companyName}`}
+  description={`Terms of Use for ${companyName} mobile applications, including ${onyx.fullName} and ONYX Black subscriptions.`}
+  path="/terms"
+>
+  <article class="mx-auto max-w-3xl px-6 py-16 sm:py-24">
+    <header>
+      <h1 class="text-3xl font-bold tracking-tight text-text sm:text-4xl">
+        Terms of Use
+      </h1>
+      <p class="mt-4 text-text-muted">Last updated: {lastUpdated}</p>
+    </header>
+
+    <div class="prose-custom mt-12 space-y-10 text-text-muted leading-relaxed">
+      <section>
+        <h2 class="text-xl font-semibold text-text">Agreement</h2>
+        <p class="mt-4">
+          These Terms of Use ("Terms") govern your access to and use of mobile applications
+          published by {companyName} ("Pixel Arc Labs," "I," "me," or "my"), including{' '}
+          {onyx.fullName} ("ONYX" or the "App"). By downloading, installing, or using the App,
+          you agree to these Terms. If you do not agree, do not use the App.
+        </p>
+        <p class="mt-4">
+          These Terms apply in addition to Apple's{' '}
+          <a
+            href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+            class="text-accent transition-colors hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Licensed Application End User License Agreement
+          </a>{' '}
+          ("Apple EULA") where applicable. To the extent of any conflict between these Terms
+          and the Apple EULA regarding use of the App on Apple devices, the Apple EULA
+          controls.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-text">The App</h2>
+        <p class="mt-4">
+          ONYX is a personal bill and money tracker for iPhone. The App helps you record
+          bills, accounts, income, and related information. Features may change over time as
+          I improve the App.
+        </p>
+        <p class="mt-4">
+          ONYX is not a bank, lender, financial advisor, tax preparer, or payment processor.
+          Information in the App is for your personal organization only and should not be
+          treated as financial, legal, or tax advice.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-text">Accounts and your data</h2>
+        <p class="mt-4">
+          Some features require an account. You are responsible for maintaining the security
+          of your credentials and for activity under your account. You agree to provide
+          accurate information and to use the App lawfully.
+        </p>
+        <p class="mt-4">
+          You retain ownership of content you enter into the App. You grant me a limited
+          license to host, process, and sync that content solely to operate the App and
+          provide support. How I handle personal information is described in my{' '}
+          <a
+            href="/privacy"
+            class="text-accent transition-colors hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+          >
+            Privacy Policy
+          </a>.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-text">ONYX Black subscriptions</h2>
+        <p class="mt-4">
+          ONYX Black is an optional auto-renewing subscription that unlocks premium
+          features such as data export, home screen widgets, unlimited accounts, and bank
+          account sync (when available). Free features of ONYX remain available without a
+          subscription.
+        </p>
+
+        <h3 class="mt-6 text-lg font-semibold text-text">Billing through Apple</h3>
+        <p class="mt-4">
+          All purchases and subscriptions are processed by Apple through your Apple ID. I do
+          not collect or store your payment card details. Apple's terms and privacy policy
+          apply to payment processing.
+        </p>
+
+        <h3 class="mt-6 text-lg font-semibold text-text">Plans, pricing, and free trials</h3>
+        <p class="mt-4">
+          ONYX Black may be offered as monthly and/or annual subscriptions. Prices are
+          displayed in the App before you confirm a purchase and may vary by region. From
+          time to time I may offer a free trial or introductory period. If a free trial is
+          offered, you will see the trial length and the price that applies after the trial
+          before you subscribe.
+        </p>
+        <p class="mt-4">
+          Unless you cancel at least 24 hours before the end of a trial or current billing
+          period, your subscription automatically renews and your Apple ID is charged for
+          the next period at the then-current price.
+        </p>
+
+        <h3 class="mt-6 text-lg font-semibold text-text">Managing and cancelling</h3>
+        <p class="mt-4">
+          You can manage or cancel a subscription at any time in your Apple ID account
+          settings:
+        </p>
+        <p class="mt-4">
+          <a
+            href="https://apps.apple.com/account/subscriptions"
+            class="text-accent transition-colors hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            apps.apple.com/account/subscriptions
+          </a>
+        </p>
+        <p class="mt-4">
+          Deleting the App does not cancel your subscription. Refunds are handled by Apple
+          according to Apple's policies; contact Apple Support for billing disputes or refund
+          requests.
+        </p>
+
+        <h3 class="mt-6 text-lg font-semibold text-text">Restore purchases</h3>
+        <p class="mt-4">
+          If you reinstall the App or use a new device, use "Restore purchases" in the App
+          to reactivate ONYX Black on the same Apple ID used for the original purchase.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-text">Acceptable use</h2>
+        <p class="mt-4">You agree not to:</p>
+        <ul class="mt-4 list-disc space-y-2 pl-6">
+          <li>Use the App for any unlawful purpose or in violation of applicable laws</li>
+          <li>Attempt to reverse engineer, decompile, or extract source code from the App</li>
+          <li>Interfere with or disrupt the App, servers, or networks connected to the App</li>
+          <li>Access the App through unauthorized automated means</li>
+          <li>Misrepresent your identity or impersonate another person</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-text">Third-party services</h2>
+        <p class="mt-4">
+          The App may integrate with third-party services (for example, cloud sync,
+          authentication, analytics, or bank linking through Plaid). Those services are
+          governed by their own terms and policies. I am not responsible for third-party
+          services outside my reasonable control.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-text">Disclaimers</h2>
+        <p class="mt-4">
+          THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND,
+          WHETHER EXPRESS OR IMPLIED, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY,
+          FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. I DO NOT WARRANT THAT THE
+          APP WILL BE UNINTERRUPTED, ERROR-FREE, OR COMPLETELY SECURE.
+        </p>
+        <p class="mt-4">
+          You use the App at your own risk. You are solely responsible for financial
+          decisions you make and for verifying amounts, due dates, and account information.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-text">Limitation of liability</h2>
+        <p class="mt-4">
+          TO THE MAXIMUM EXTENT PERMITTED BY LAW, {companyName.toUpperCase()} AND ITS OWNER
+          WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR
+          PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, DATA, OR GOODWILL, ARISING FROM YOUR
+          USE OF THE APP. MY TOTAL LIABILITY FOR ANY CLAIM RELATING TO THE APP WILL NOT
+          EXCEED THE GREATER OF (A) THE AMOUNT YOU PAID FOR ONYX BLACK IN THE TWELVE (12)
+          MONTHS BEFORE THE CLAIM OR (B) FIFTY U.S. DOLLARS ($50).
+        </p>
+        <p class="mt-4">
+          Some jurisdictions do not allow certain limitations, so some of the above may not
+          apply to you.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-text">Changes</h2>
+        <p class="mt-4">
+          I may update these Terms from time to time. When I do, I will revise the "Last
+          updated" date above. Material changes may also be communicated in the App or on
+          this website. Continued use after changes take effect constitutes acceptance of
+          the updated Terms.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-text">Contact</h2>
+        <p class="mt-4">
+          Questions about these Terms? Contact {companyName} at{' '}
+          <a
+            href={`mailto:${supportEmail}`}
+            class="text-accent transition-colors hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+          >
+            {supportEmail}
+          </a>.
+        </p>
+      </section>
+    </div>
+
+    <p class="mt-16">
+      <a
+        href="/"
+        class="text-sm text-text-muted transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+      >
+        &larr; Back to home
+      </a>
+    </p>
+  </article>
+</BaseLayout>

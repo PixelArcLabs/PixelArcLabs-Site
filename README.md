@@ -9,6 +9,7 @@ A modern company site for [pixelarclabs.com](https://pixelarclabs.com), built wi
 | `/` | Company landing page |
 | `/contact` | Support contact form |
 | `/privacy` | Privacy policy |
+| `/terms` | Terms of Use (EULA) |
 
 ## Local development
 
@@ -48,6 +49,7 @@ Use these URLs when submitting apps:
 
 - **Support URL:** `https://pixelarclabs.com`
 - **Privacy Policy URL:** `https://pixelarclabs.com/privacy`
+- **Terms of Use (EULA) URL:** `https://pixelarclabs.com/terms`
 - **Marketing URL (optional):** `https://pixelarclabs.com`
 
 Support contact: [hello@pixelarclabs.com](mailto:hello@pixelarclabs.com)
