@@ -10,8 +10,8 @@ const panelId = `apps-menu-panel-${variant}`;
 
 const triggerClass =
   variant === 'desktop'
-    ? 'nav-apps-trigger inline-flex items-center gap-1 rounded-full px-4 py-1.5 text-sm text-text-muted transition-colors hover:bg-white/5 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent'
-    : 'nav-apps-trigger inline-flex items-center gap-0.5 text-sm text-text-muted transition-colors hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full px-1';
+    ? 'nav-apps-trigger inline-flex items-center gap-1 rounded-full px-4 py-1.5 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-text-muted transition-colors hover:bg-white/5 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent'
+    : 'nav-apps-trigger inline-flex items-center gap-0.5 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-text-muted transition-colors hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full px-1';
 ---
 
 <div class="nav-apps-menu relative" data-nav-apps-menu>
@@ -43,7 +43,7 @@ const triggerClass =
   <div
     id={panelId}
     class:list={[
-      'nav-apps-panel pointer-events-none absolute z-50 min-w-[15.5rem] origin-top scale-95 opacity-0 transition-all duration-200',
+      'nav-apps-panel absolute z-50 min-w-[15.5rem]',
       variant === 'desktop'
         ? 'left-0 top-[calc(100%+0.5rem)]'
         : 'right-0 top-[calc(100%+0.5rem)]',
@@ -52,7 +52,7 @@ const triggerClass =
     aria-label="Apps"
     hidden
   >
-    <div class="glass-pill overflow-hidden rounded-2xl border border-border/80 p-1.5 shadow-xl">
+    <div class="glass-pill nav-apps-panel-surface overflow-hidden rounded-2xl p-1.5 shadow-xl">
       <ul class="space-y-0.5">
         {
           apps.map((app) => (

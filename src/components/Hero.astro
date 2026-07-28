@@ -1,47 +1,56 @@
 ---
 ---
 
-<section class="relative overflow-hidden border-b border-border/40">
+<section class="relative overflow-hidden">
   <div class="hero-mesh absolute inset-0" aria-hidden="true"></div>
-  <div class="pixel-grid absolute inset-0 opacity-60" aria-hidden="true"></div>
+  <div class="pixel-grid absolute inset-0 opacity-50" aria-hidden="true"></div>
 
-  <div class="relative mx-auto max-w-3xl px-6 py-28 sm:py-36">
-    <p class="fade-in mb-4 text-sm font-medium tracking-wide text-accent uppercase">
-      Indie iOS studio
+  <!-- Arc motif — nod to the mark -->
+  <svg
+    class="pointer-events-none absolute -right-32 -top-40 h-[34rem] w-[34rem] text-text/[0.07] sm:-right-20 sm:h-[44rem] sm:w-[44rem]"
+    viewBox="0 0 400 400"
+    fill="none"
+    aria-hidden="true"
+  >
+    <circle cx="200" cy="200" r="160" stroke="currentColor" stroke-width="1" />
+    <circle cx="200" cy="200" r="120" stroke="currentColor" stroke-width="1" stroke-dasharray="2 6" />
+    <rect x="192" y="32" width="16" height="16" fill="currentColor" transform="rotate(45 200 40)" />
+  </svg>
+
+  <div class="relative mx-auto max-w-5xl px-6 pb-16 pt-40 sm:pb-24 sm:pt-52">
+    <p class="fade-in font-mono text-[0.6875rem] uppercase tracking-[0.28em] text-text-muted">
+      Pixel Arc Labs<span class="mx-3 text-accent">●</span>Independent software studio
     </p>
 
-    <h1 class="fade-in-delay-1 text-4xl font-bold tracking-tight text-text sm:text-5xl lg:text-6xl">
-      Thoughtful apps,<br />
-      <span class="text-text-muted">built with care.</span>
+    <h1 class="fade-in-delay-1 mt-8 text-[clamp(3.25rem,9vw,7.5rem)] font-semibold leading-[0.95] tracking-[-0.03em] text-text">
+      Thoughtful apps,
+      <span class="block font-display font-normal italic tracking-[-0.01em] text-accent">built with care.</span>
     </h1>
 
-    <p class="fade-in-delay-2 mt-6 max-w-xl text-lg leading-relaxed text-text-muted">
-      I design and build iOS apps under Pixel Arc Labs — clear, private, and polished
+    <p class="fade-in-delay-2 mt-10 max-w-md text-base leading-relaxed text-text-muted sm:text-lg">
+      Mac and iOS software from a one-person studio — clear, private, and polished
       tools people actually enjoy using every day.
     </p>
 
-    <div class="fade-in-delay-3 mt-10">
-      <a
-        href="/contact"
-        class="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-      >
-        Get in touch
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M5 12h14"></path>
-          <path d="m12 5 7 7-7 7"></path>
-        </svg>
+    <div class="fade-in-delay-3 mt-12 flex flex-wrap items-center gap-10">
+      <a href="/#apps" class="link-arrow">
+        See the apps
+        <span class="arrow" aria-hidden="true">→</span>
       </a>
+      <a href="/contact" class="link-arrow text-text-muted">
+        Get in touch
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Spec strip -->
+  <div class="relative border-t border-border">
+    <div class="mx-auto grid max-w-5xl grid-cols-2 gap-px px-6 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-text-muted sm:grid-cols-4">
+      <p class="py-5 pr-4">macOS · iOS</p>
+      <p class="py-5 pr-4">One-person studio</p>
+      <p class="py-5 pr-4">Privacy-first</p>
+      <p class="py-5">No tracking, ever</p>
     </div>
   </div>
 </section>

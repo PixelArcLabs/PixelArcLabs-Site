@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "T69T77WY8B.com.PixelArcLabs.Onyx"
+        ],
+        "paths": [
+          "/plaid/oauth",
+          "/plaid/oauth/*"
+        ]
+      }
+    ]
+  }
+}

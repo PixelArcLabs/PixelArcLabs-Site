@@ -1,0 +1,32 @@
+/.well-known/apple-app-site-association
+  Content-Type: application/json
+  Cache-Control: public, max-age=300
+
+/favicon.ico
+  Cache-Control: public, max-age=300, must-revalidate
+
+/favicon.png
+  Cache-Control: public, max-age=300, must-revalidate
+
+/favicon.svg
+  Cache-Control: public, max-age=300, must-revalidate
+
+/apple-touch-icon.png
+  Cache-Control: public, max-age=300, must-revalidate
+
+/plaid/oauth
+  Cache-Control: no-store
+
+/plaid/oauth/*
+  Cache-Control: no-store
+
+/holodock/updates/appcast.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=300
+
+/holodock/updates/notes-*.html
+  Content-Type: text/html; charset=utf-8
+  Cache-Control: public, max-age=300
+
+/holodock/updates/*
+  Cache-Control: public, max-age=3600

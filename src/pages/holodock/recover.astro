@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { supportEmail } from '../../config/site';
+---
+
+<BaseLayout
+  title="Recover HoloDock download"
+  description="Re-unlock your HoloDock download with your Stripe checkout email and session ID."
+  path="/holodock/recover"
+>
+  <section class="relative mx-auto max-w-3xl px-6 pb-20 pt-32 sm:pt-40">
+    <h1 class="text-3xl font-bold tracking-tight text-text">Recover download</h1>
+    <p class="mt-4 max-w-xl text-text-muted">
+      Use the checkout email from your Stripe receipt, plus the
+      <code class="text-text">session_id</code> from your original thank-you URL
+      (<code class="text-xs text-text-muted">cs_live_…</code> or <code class="text-xs text-text-muted">cs_test_…</code>).
+      Downloads stay email-matched and device-bound.
+    </p>
+
+    <form id="recover-form" class="mt-10 max-w-md space-y-4">
+      <label class="block text-sm text-text-muted">
+        Checkout email
+        <input
+          name="email"
+          type="email"
+          required
+          class="mt-2 w-full rounded-xl border border-border bg-bg-muted px-4 py-3 text-sm text-text outline-none ring-accent focus:ring-2"
+        />
+      </label>
+      <label class="block text-sm text-text-muted">
+        Checkout session ID
+        <input
+          name="session_id"
+          type="text"
+          required
+          placeholder="cs_live_…"
+          class="mt-2 w-full rounded-xl border border-border bg-bg-muted px-4 py-3 font-mono text-sm text-text outline-none ring-accent focus:ring-2"
+        />
+      </label>
+      <button
+        type="submit"
+        class="inline-flex w-full items-center justify-center rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white hover:bg-accent-hover"
+      >
+        Continue to unlock
+      </button>
+    </form>
+
+    <p class="mt-8 text-sm text-text-muted">
+      Can’t find your session ID? Email
+      <a class="text-accent hover:text-accent-hover" href={`mailto:${supportEmail}`}>{supportEmail}</a>
+      with your Stripe receipt.
+    </p>
+  </section>
+</BaseLayout>
+
+<script>
+  document.getElementById('recover-form')?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const data = new FormData(form);
+    const sessionId = String(data.get('session_id') || '').trim();
+    const email = String(data.get('email') || '').trim();
+    if (!sessionId.startsWith('cs_') || !email.includes('@')) return;
+
+    const url = new URL('/holodock/thanks', window.location.origin);
+    url.searchParams.set('session_id', sessionId);
+    if (sessionId.startsWith('cs_test_')) url.searchParams.set('sandbox', '1');
+    // Prefill email via hash so thanks page can read it without putting it in referrer logs overly
+    url.hash = `email=${encodeURIComponent(email)}`;
+    window.location.href = url.toString();
+  });
+</script>

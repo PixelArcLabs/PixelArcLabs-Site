@@ -1,0 +1,30 @@
+---
+const items = [
+  'HoloDock',
+  'ONYX',
+  'macOS',
+  'iOS',
+  'Privacy-first',
+  'No subscriptions for utilities',
+  'Built by hand',
+];
+
+const sequence = items.map((item) => item.toUpperCase());
+---
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track py-3.5 font-mono text-[0.6875rem] tracking-[0.24em] text-text-muted">
+    {
+      [0, 1].map(() => (
+        <span class="flex shrink-0 items-center">
+          {sequence.map((item) => (
+            <span class="flex items-center">
+              <span class="px-6">{item}</span>
+              <span class="text-accent">✦</span>
+            </span>
+          ))}
+        </span>
+      ))
+    }
+  </div>
+</div>

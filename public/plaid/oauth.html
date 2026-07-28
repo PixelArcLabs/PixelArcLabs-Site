@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Return to ONYX</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 2rem; color: #111; line-height: 1.4; }
+    a.button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.85rem 1.25rem;
+      background: #111;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+  </style>
+  <script>
+    (function () {
+      // Plaid requires the exact HTTPS redirect URI (with oauth_state_id) for resume.
+      var httpsUrl = window.location.href.split("#")[0];
+      var deepLink =
+        "com.pixelarclabs.onyx://plaid-oauth?receivedRedirectUri=" +
+        encodeURIComponent(httpsUrl);
+      function wire() {
+        var btn = document.getElementById("open-onyx");
+        if (btn) btn.href = deepLink;
+      }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", wire);
+      } else {
+        wire();
+      }
+      window.location.replace(deepLink);
+    })();
+  </script>
+</head>
+<body>
+  <h1>Return to ONYX</h1>
+  <p>Finishing bank connection… If ONYX did not open, tap below.</p>
+  <a id="open-onyx" class="button" href="com.pixelarclabs.onyx://plaid-oauth">Open ONYX</a>
+</body>
+</html>

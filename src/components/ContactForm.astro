@@ -7,21 +7,11 @@ import { supportEmail } from '../config/site';
   <p class="mt-2 text-text-muted">I'll be in touch shortly.</p>
 </div>
 
-<form
-  id="contact-form"
-  name="contact"
-  method="POST"
-  action="/contact?success=true"
-  data-netlify="true"
-  netlify-honeypot="bot-field"
-  class="space-y-6"
->
-  <input type="hidden" name="form-name" value="contact" />
-
+<form id="contact-form" class="space-y-6">
   <p class="hidden" aria-hidden="true">
     <label>
       Don't fill this out:
-      <input name="bot-field" tabindex="-1" autocomplete="off" />
+      <input name="bot-field" id="bot-field" tabindex="-1" autocomplete="off" />
     </label>
   </p>
 
@@ -63,9 +53,12 @@ import { supportEmail } from '../config/site';
     ></textarea>
   </div>
 
+  <p id="form-error" class="hidden text-sm text-red-400"></p>
+
   <button
     type="submit"
-    class="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+    id="contact-submit"
+    class="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:opacity-50"
   >
     Send message
     <svg
@@ -99,15 +92,49 @@ import { supportEmail } from '../config/site';
 </p>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('success') === 'true') {
-    const form = document.getElementById('contact-form');
-    const success = document.getElementById('form-success');
-    if (form && success) {
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const success = document.getElementById('form-success');
+  const errEl = document.getElementById('form-error');
+  const submitBtn = document.getElementById('contact-submit') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!form || !submitBtn) return;
+    errEl?.classList.add('hidden');
+    submitBtn.disabled = true;
+
+    const payload = {
+      name: (form.elements.namedItem('name') as HTMLInputElement).value,
+      email: (form.elements.namedItem('email') as HTMLInputElement).value,
+      message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
+      botField: (document.getElementById('bot-field') as HTMLInputElement | null)?.value ?? '',
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = (await res.json().catch(() => ({}))) as { error?: string; ok?: boolean };
+      if (!res.ok) {
+        if (errEl) {
+          errEl.textContent = data.error || 'Could not send message.';
+          errEl.classList.remove('hidden');
+        }
+        return;
+      }
       form.classList.add('hidden');
-      success.classList.remove('hidden');
+      success?.classList.remove('hidden');
+    } catch {
+      if (errEl) {
+        errEl.textContent = 'Network error. Try again or email me directly.';
+        errEl.classList.remove('hidden');
+      }
+    } finally {
+      submitBtn.disabled = false;
     }
-  }
+  });
 
   const copyBtn = document.getElementById('copy-email');
   const copyFeedback = document.getElementById('copy-feedback');

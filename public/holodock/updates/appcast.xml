@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>HoloDock</title>
+    <link>https://pixelarclabs.com/holodock/updates/appcast.xml</link>
+    <description>HoloDock release feed</description>
+    <language>en</language>
+    <item>
+      <title>Version 1.0.1</title>
+      <pubDate>Mon, 27 Jul 2026 05:25:20 +0000</pubDate>
+      <sparkle:version>2</sparkle:version>
+      <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <enclosure
+        url="https://pixelarclabs.com/api/holodock/sparkle-dmg?file=HoloDock-1.0.1.dmg"
+        length="2092653"
+        type="application/octet-stream"
+        sparkle:edSignature="qJ2aQkQVqXWCW6bx189D3PsDIYGoBCADHrO5DY/De+il5xXMLz6yW/7jFIbYkNyLcud+jB99ugVa1Qcwh4fSDg==" />
+    </item>
+    <item>
+      <title>Version 1.0.2</title>
+      <pubDate>Mon, 27 Jul 2026 05:37:16 +0000</pubDate>
+      <sparkle:version>3</sparkle:version>
+      <sparkle:shortVersionString>1.0.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <enclosure
+        url="https://pixelarclabs.com/api/holodock/sparkle-dmg?file=HoloDock-1.0.2.dmg"
+        length="2092756"
+        type="application/octet-stream"
+        sparkle:edSignature="0R/IfTvxeuQJCzGYbE/S8vedlBwsUHODFq5hLPzXj+qdXYKCXM+W3Q4Kjm/lLjT1wG2/8IRM3HcgCb3ASxp2AQ==" />
+    </item>
+      <item>
+      <title>Version 1.0.3</title>
+      <pubDate>Tue, 28 Jul 2026 02:47:14 +0000</pubDate>
+      <sparkle:version>4</sparkle:version>
+      <sparkle:shortVersionString>1.0.3</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <enclosure
+        url="https://pixelarclabs.com/api/holodock/sparkle-dmg?file=HoloDock-1.0.3.dmg"
+        length="2092201"
+        type="application/octet-stream"
+        sparkle:edSignature="uKafo0LoEnh39IDJm57HHeBDrL85Wqt1ZW+ASpXPgMsN6Zdit04ovgDz1bIqfjW21D+IAlMqO2RXs9eD+fLUBg==" />
+    </item>
+      <item>
+      <title>Version 1.0.5</title>
+      <pubDate>Tue, 28 Jul 2026 04:41:21 +0000</pubDate>
+      <sparkle:version>6</sparkle:version>
+      <sparkle:shortVersionString>1.0.5</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <sparkle:releaseNotesLink>https://pixelarclabs.com/holodock/updates/notes-1.0.5</sparkle:releaseNotesLink>
+      <description><![CDATA[<h2>What&#x27;s New in HoloDock 1.0.5</h2><ul><li><strong>Live theme preview</strong> in Settings → Appearance — see glass, border, and titles update as you adjust them</li><li>Light / Dark / System now applies instantly to Settings chrome while you switch</li></ul>]]></description>
+      <enclosure
+        url="https://pixelarclabs.com/api/holodock/sparkle-dmg?file=HoloDock-1.0.5.dmg"
+        length="2160497"
+        type="application/octet-stream"
+        sparkle:edSignature="QqgkvrZB5QAEU6aB3uDGxHKzcJO+qM5UbhcKx+qO+V2zZdS+6XeTVKzVXOuOjs7h8an11fF0R/moCG9uK0a/Dw==" />
+    </item>
+
+      <item>
+      <title>Version 1.0.6</title>
+      <pubDate>Tue, 28 Jul 2026 04:50:51 +0000</pubDate>
+      <sparkle:version>7</sparkle:version>
+      <sparkle:shortVersionString>1.0.6</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <sparkle:releaseNotesLink>https://pixelarclabs.com/holodock/updates/notes-1.0.6</sparkle:releaseNotesLink>
+      <description><![CDATA[<h2>What&#x27;s New in HoloDock 1.0.6</h2><ul><li>Live theme preview now shows <strong>your desktop wallpaper</strong> behind the glass so opacity changes are easy to judge</li><li>After Install &amp; Relaunch (or reopen after an update), HoloDock greets you with <strong>All Set! You have the latest version.</strong></li></ul>]]></description>
+      <enclosure
+        url="https://pixelarclabs.com/api/holodock/sparkle-dmg?file=HoloDock-1.0.6.dmg"
+        length="2178369"
+        type="application/octet-stream"
+        sparkle:edSignature="mOyhNpC96NHgfFfwBGmLos19D/2Y6J/zEMXIKmt9Rl7vZNWx7LHrIzUKdp5yI5DLxdkEBSHxtujOasgbVoCdBA==" />
+    </item>
+
+      <item>
+      <title>Version 1.0.7</title>
+      <pubDate>Tue, 28 Jul 2026 04:55:59 +0000</pubDate>
+      <sparkle:version>8</sparkle:version>
+      <sparkle:shortVersionString>1.0.7</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <sparkle:releaseNotesLink>https://pixelarclabs.com/holodock/updates/notes-1.0.7</sparkle:releaseNotesLink>
+      <description><![CDATA[<h2>What&#x27;s New in HoloDock 1.0.7</h2><ul><li>Fixed <strong>Check for Updates</strong> doing nothing on the first click (right after launch)</li><li>Update checks now wait for Sparkle to finish its startup pass, then always show a result</li></ul>]]></description>
+      <enclosure
+        url="https://pixelarclabs.com/api/holodock/sparkle-dmg?file=HoloDock-1.0.7.dmg"
+        length="2183486"
+        type="application/octet-stream"
+        sparkle:edSignature="K2e6CHQ9dP0X+O6GZs1yBWaZrp1iEXvLUKev31mvW0pn0KLkSW3EYAtl5GoyGBmQidcs9cbuyYYiLxjtvRyyAQ==" />
+    </item>
+
+      <item>
+      <title>Version 1.0.8</title>
+      <pubDate>Tue, 28 Jul 2026 05:07:25 +0000</pubDate>
+      <sparkle:version>9</sparkle:version>
+      <sparkle:shortVersionString>1.0.8</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <sparkle:releaseNotesLink>https://pixelarclabs.com/holodock/updates/notes-1.0.8</sparkle:releaseNotesLink>
+      <description><![CDATA[<h2>What&#x27;s New in HoloDock 1.0.8</h2><ul><li>Fixed <strong>System / Light / Dark</strong> in Settings → Appearance doing nothing</li><li>Theme now applies live to the Settings window (and About)</li></ul>]]></description>
+      <enclosure
+        url="https://pixelarclabs.com/api/holodock/sparkle-dmg?file=HoloDock-1.0.8.dmg"
+        length="2184397"
+        type="application/octet-stream"
+        sparkle:edSignature="Iend8+MPQ0E+Z5kuK1GtPSF3z6eh9bErAogq/PW2puWYEjgIU9GuoZ8GIa8XGaZ1naydJovkMVQzEL4jprnICQ==" />
+    </item>
+
+  </channel>
+</rss>

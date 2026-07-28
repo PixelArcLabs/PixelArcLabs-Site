@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { holodock, supportEmail } from '../../config/site';
+---
+
+<BaseLayout
+  title="Thanks for buying HoloDock"
+  description="Verify your purchase email to unlock your private HoloDock download."
+  path="/holodock/thanks"
+>
+  <section class="relative overflow-hidden border-b border-border/40">
+    <div class="hero-mesh absolute inset-0" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-3xl px-6 pb-20 pt-32 sm:pb-28 sm:pt-40">
+      <p class="fade-in mb-4 text-sm font-medium tracking-wide text-accent uppercase" id="thanks-label">
+        Purchase complete
+      </p>
+
+      <div class="fade-in-delay-1 flex flex-col items-start gap-8 sm:flex-row sm:items-center">
+        <img
+          src={holodock.iconSrc}
+          alt=""
+          width="96"
+          height="96"
+          class="h-24 w-24 shrink-0 rounded-[1.5rem] object-cover shadow-lg ring-1 ring-white/10"
+        />
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight text-text sm:text-4xl">
+            Unlock your download
+          </h1>
+          <p class="mt-3 max-w-xl text-lg leading-relaxed text-text-muted" id="thanks-body">
+            Confirm the email you used at checkout. Downloads are private: email-matched,
+            device-bound, single-use links, 5 downloads / 14 days.
+          </p>
+        </div>
+      </div>
+
+      <form id="claim-form" class="fade-in-delay-2 mt-10 max-w-md space-y-4">
+        <label class="block text-sm text-text-muted">
+          Checkout email
+          <span id="email-hint" class="mt-1 block text-xs text-text-muted/70"></span>
+          <input
+            id="email-input"
+            name="email"
+            type="email"
+            required
+            autocomplete="email"
+            class="mt-2 w-full rounded-xl border border-border bg-bg-muted px-4 py-3 text-sm text-text outline-none ring-accent focus:ring-2"
+            placeholder="you@example.com"
+          />
+        </label>
+        <button
+          type="submit"
+          id="claim-btn"
+          class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          Verify &amp; prepare download
+        </button>
+      </form>
+
+      <div id="download-panel" class="fade-in-delay-2 mt-8 hidden space-y-4">
+        <button
+          type="button"
+          id="download-btn"
+          class="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
+        >
+          Download HoloDock
+        </button>
+        <p id="license-box" class="hidden rounded-xl border border-border bg-bg-muted p-4 text-sm text-text-muted">
+          License key — save this. It activates HoloDock on up to 2 Macs:
+          <code id="license-key" class="mt-2 block break-all font-mono text-text"></code>
+        </p>
+        <p id="remaining" class="text-xs text-text-muted"></p>
+      </div>
+
+      <p id="download-error" class="mt-6 hidden max-w-lg text-sm leading-relaxed text-red-300"></p>
+
+      <p class="mt-10 text-sm text-text-muted">
+        Lost access?
+        <a href="/holodock/recover" class="text-accent hover:text-accent-hover">Recover download</a>
+        · Support
+        <a class="text-accent hover:text-accent-hover" href={`mailto:${supportEmail}`}>{supportEmail}</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get('session_id');
+  const sandbox = params.has('sandbox') || params.get('mode') === 'test';
+
+  const label = document.getElementById('thanks-label');
+  const body = document.getElementById('thanks-body');
+  const form = document.getElementById('claim-form') as HTMLFormElement | null;
+  const emailInput = document.getElementById('email-input') as HTMLInputElement | null;
+  const emailHint = document.getElementById('email-hint');
+  const claimBtn = document.getElementById('claim-btn') as HTMLButtonElement | null;
+  const panel = document.getElementById('download-panel');
+  const downloadBtn = document.getElementById('download-btn') as HTMLButtonElement | null;
+  const err = document.getElementById('download-error');
+  const remaining = document.getElementById('remaining');
+  const licenseBox = document.getElementById('license-box');
+  const licenseKeyEl = document.getElementById('license-key');
+
+  let activeToken: string | null = null;
+
+  if (sandbox && label) label.textContent = 'Sandbox purchase complete';
+
+  function showError(message: string) {
+    if (!err) return;
+    err.textContent = message;
+    err.classList.remove('hidden');
+  }
+
+  function clearError() {
+    err?.classList.add('hidden');
+  }
+
+  // Recover flow may pass email in the URL hash
+  if (emailInput && window.location.hash.startsWith('#email=')) {
+    emailInput.value = decodeURIComponent(window.location.hash.slice('#email='.length));
+  }
+
+  if (!sessionId) {
+    if (body) {
+      body.textContent =
+        'Missing purchase session. Return here from Stripe checkout, or use Recover download with your receipt details.';
+    }
+    form?.classList.add('hidden');
+  } else {
+    fetch(`/api/holodock/status?session_id=${encodeURIComponent(sessionId)}`)
+      .then(async (res) => {
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || 'Purchase not found');
+        if (emailHint && data.emailMasked) {
+          emailHint.textContent = `Must match checkout email (${data.emailMasked})`;
+        }
+        if (remaining) {
+          remaining.textContent = `${data.downloadsRemaining ?? 0} downloads remaining`;
+        }
+      })
+      .catch((error: Error) => showError(error.message));
+  }
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    clearError();
+    if (!sessionId || !emailInput || !claimBtn) return;
+
+    claimBtn.disabled = true;
+    claimBtn.textContent = 'Verifying…';
+
+    try {
+      const res = await fetch('/api/holodock/claim', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: sessionId, email: emailInput.value }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || 'Verification failed');
+
+      activeToken = data.token;
+      form.classList.add('hidden');
+      panel?.classList.remove('hidden');
+      if (body) {
+        body.textContent =
+          'Verified. Your download link is single-use and expires in 10 minutes. Re-verify if you need another copy.';
+      }
+      if (remaining) {
+        remaining.textContent = `${data.downloadsRemaining ?? 0} downloads remaining after this one`;
+      }
+      if (data.licenseKey && licenseBox && licenseKeyEl) {
+        licenseKeyEl.textContent = data.licenseKey;
+        licenseBox.classList.remove('hidden');
+      }
+    } catch (error) {
+      showError(error instanceof Error ? error.message : 'Verification failed');
+      claimBtn.disabled = false;
+      claimBtn.textContent = 'Verify & prepare download';
+      return;
+    }
+
+    claimBtn.disabled = false;
+    claimBtn.textContent = 'Verify & prepare download';
+  });
+
+  downloadBtn?.addEventListener('click', async () => {
+    clearError();
+    if (!activeToken || !sessionId) {
+      showError('Claim a download token first.');
+      return;
+    }
+
+    downloadBtn.disabled = true;
+    downloadBtn.textContent = 'Starting download…';
+
+    // Navigate once — token is single-use
+    const url = `/api/holodock/download?token=${encodeURIComponent(activeToken)}`;
+    activeToken = null;
+    window.location.href = url;
+
+    // After navigation attempt, prompt to re-claim for another copy
+    setTimeout(() => {
+      downloadBtn.disabled = false;
+      downloadBtn.textContent = 'Need another copy? Re-verify above';
+      form?.classList.remove('hidden');
+      if (body) {
+        body.textContent =
+          'Each download link works once. Enter your checkout email again to mint a new link.';
+      }
+    }, 1500);
+  });
+</script>

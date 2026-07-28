@@ -4,37 +4,44 @@ import { companyName } from '../config/site';
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-border/40">
-  <div class="mx-auto flex max-w-3xl flex-col items-start justify-between gap-4 px-6 py-8 sm:flex-row sm:items-center">
-    <p class="text-sm text-text-muted">
-      &copy; {year} {companyName}. All rights reserved.
-    </p>
+<footer class="overflow-hidden border-t border-border">
+  <div class="mx-auto max-w-5xl px-6">
+    <div class="flex flex-col items-start justify-between gap-6 py-10 font-mono text-[0.625rem] uppercase tracking-[0.18em] text-text-muted sm:flex-row sm:items-center">
+      <p>&copy; {year} {companyName}</p>
 
-    <ul class="flex items-center gap-6">
-      <li>
-        <a
-          href="/terms"
-          class="text-sm text-text-muted transition-colors hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg rounded-sm"
-        >
-          Terms of Use
-        </a>
-      </li>
-      <li>
-        <a
-          href="/privacy"
-          class="text-sm text-text-muted transition-colors hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg rounded-sm"
-        >
-          Privacy Policy
-        </a>
-      </li>
-      <li>
-        <a
-          href="/contact"
-          class="text-sm text-text-muted transition-colors hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg rounded-sm"
-        >
-          Contact
-        </a>
-      </li>
-    </ul>
+      <ul class="flex items-center gap-8">
+        <li>
+          <a
+            href="/terms"
+            class="transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+          >
+            Terms
+          </a>
+        </li>
+        <li>
+          <a
+            href="/privacy"
+            class="transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+          >
+            Privacy
+          </a>
+        </li>
+        <li>
+          <a
+            href="/contact"
+            class="transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+          >
+            Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <p
+      class="wordmark-outline select-none whitespace-nowrap text-center text-[clamp(3rem,10.5vw,8.5rem)] font-bold uppercase leading-none tracking-[-0.02em]"
+      aria-hidden="true"
+    >
+      Pixel&nbsp;Arc&nbsp;Labs
+    </p>
   </div>
 </footer>

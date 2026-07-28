@@ -2,48 +2,39 @@
 import { supportEmail } from '../config/site';
 ---
 
-<section id="support" class="border-t border-border/40 bg-bg-elevated/50">
-  <div class="mx-auto max-w-3xl px-6 py-24 sm:py-28">
-    <h2 class="text-sm font-medium tracking-wide text-accent uppercase">Support</h2>
+<section id="support" class="scroll-mt-28 border-t border-border">
+  <div class="mx-auto max-w-5xl px-6 py-24 sm:py-32">
+    <h2 class="rule-label" data-reveal>
+      <span class="text-accent">03</span>
+      Support
+    </h2>
 
-    <p class="mt-6 max-w-xl text-lg leading-relaxed text-text-muted">
-      Need help with a Pixel Arc Labs app? I'm here. This page is the official support
-      contact for all of my applications on the App Store.
-    </p>
+    <div class="mt-14" data-reveal>
+      <p class="text-4xl font-semibold tracking-tight text-text sm:text-6xl">
+        Need a hand?
+        <span class="font-display font-normal italic text-text-muted">I'm here.</span>
+      </p>
 
-    <div class="mt-8 rounded-2xl border border-border bg-bg-muted p-8">
-      <p class="text-sm text-text-muted">Send a message</p>
-      <a
-        href="/contact"
-        class="mt-2 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-muted"
-      >
-        Contact me
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M5 12h14"></path>
-          <path d="m12 5 7 7-7 7"></path>
-        </svg>
-      </a>
-      <p class="mt-4 text-sm leading-relaxed text-text-muted">
-        Or email me directly at{' '}
+      <p class="mt-8 max-w-lg text-base leading-relaxed text-text-muted">
+        Official support for every Pixel Arc Labs app. Write me directly —
+        I typically reply within a day.
+      </p>
+
+      <div class="mt-12">
         <a
           href={`mailto:${supportEmail}`}
-          class="text-accent transition-colors hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+          class="font-display text-[clamp(1.5rem,4.5vw,3rem)] italic text-text underline decoration-border decoration-1 underline-offset-8 transition-colors hover:text-accent hover:decoration-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
         >
           {supportEmail}
         </a>
-        . I typically reply within a day.
-      </p>
+      </div>
+
+      <div class="mt-14">
+        <a href="/contact" class="link-arrow">
+          Or use the contact form
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>

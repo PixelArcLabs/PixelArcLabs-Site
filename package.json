@@ -9,11 +9,20 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "cf:build": "npm run build",
+    "cf:deploy": "npm run build && wrangler pages deploy dist --project-name pixelarclabs",
+    "cf:migrate": "wrangler d1 migrations apply holodock --remote",
+    "cf:migrate:local": "wrangler d1 migrations apply holodock --local"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.4.4",
+    "stripe": "^18.5.0",
     "tailwindcss": "^4.3.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260722.1",
+    "wrangler": "^4.114.0"
   }
 }

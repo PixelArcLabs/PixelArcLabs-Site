@@ -1,0 +1,20 @@
+# Cloudflare Pages — Pixel Arc Labs
+name = "pixelarclabs"
+compatibility_date = "2026-07-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "holodock"
+database_id = "10e39879-f016-43f0-9361-8b7486fc7702"
+migrations_dir = "migrations"
+
+[[kv_namespaces]]
+binding = "RATE"
+id = "0b7d549b5518455ebc02f291b12e9bfb"
+
+# Private DMG (R2 preferred once enabled on account)
+[[kv_namespaces]]
+binding = "FILES"
+id = "63806bf10a8b4c7388441afd552cb039"

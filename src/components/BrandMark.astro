@@ -1,0 +1,16 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = 'h-7 w-7' } = Astro.props;
+---
+
+<img
+  src="/pixel-arc-logo.png"
+  alt=""
+  width="36"
+  height="36"
+  class:list={['object-contain', className]}
+  aria-hidden="true"
+/>

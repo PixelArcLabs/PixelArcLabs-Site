@@ -2,111 +2,95 @@
 import { apps } from '../config/site';
 ---
 
-<section id="apps" class="border-t border-border/40 scroll-mt-28">
-  <div class="mx-auto max-w-3xl px-6 py-24 sm:py-28">
-    <h2 class="text-sm font-medium tracking-wide text-accent uppercase">Apps</h2>
+<section id="apps" class="scroll-mt-28">
+  <div class="mx-auto max-w-5xl px-6 pt-24 sm:pt-32">
+    <h2 class="rule-label" data-reveal>
+      <span class="text-accent">01</span>
+      Apps
+    </h2>
+  </div>
 
-    <div class="mt-8 space-y-8">
-      {
-        apps.map((app) => (
-          <article
-            id={app.id}
-            class="onyx-card scroll-mt-28 overflow-hidden rounded-2xl border border-border bg-bg-muted"
-          >
-            <div class="flex flex-col gap-8 p-8 sm:flex-row sm:items-center">
-              <div class="flex shrink-0 justify-center sm:justify-start">
-                <img
-                  src={app.iconSrc}
-                  alt=""
-                  width="120"
-                  height="120"
-                  class="h-28 w-28 rounded-[1.75rem] object-cover shadow-lg ring-1 ring-white/10"
-                />
+  <div class="mx-auto mt-14 max-w-5xl px-6">
+    {
+      apps.map((app, index) => (
+        <article
+          id={app.id}
+          class="app-row scroll-mt-28 border-t border-border last:border-b"
+          data-reveal
+        >
+          <div class="grid gap-8 py-12 sm:grid-cols-[auto_1fr] sm:gap-12 sm:py-16">
+            <div class="flex flex-row items-start gap-6 sm:flex-col sm:gap-8">
+              <span class="font-mono text-[0.6875rem] tracking-[0.2em] text-text-muted">
+                {String(index + 1).padStart(2, '0')} / {app.platform.toUpperCase()}
+              </span>
+              <img
+                src={app.iconSrc}
+                alt=""
+                width="96"
+                height="96"
+                class="h-20 w-20 rounded-[1.25rem] object-cover ring-1 ring-white/10 sm:h-24 sm:w-24 sm:rounded-[1.5rem]"
+              />
+            </div>
+
+            <div class="min-w-0">
+              <div class="flex flex-wrap items-baseline gap-x-5 gap-y-2">
+                <h3 class="app-row-name text-4xl font-semibold tracking-tight text-text sm:text-5xl">
+                  {app.name}
+                </h3>
+                <p class="font-display text-xl italic text-text-muted sm:text-2xl">
+                  {app.tagline}
+                </p>
               </div>
 
-              <div class="min-w-0 flex-1">
-                <div class="flex flex-wrap items-center gap-3">
-                  <h3 class="text-2xl font-bold tracking-tight text-text">{app.name}</h3>
-                  <span class="rounded-full border border-border bg-bg-elevated px-2.5 py-0.5 text-xs font-medium text-text-muted">
-                    iOS
+              <p class="mt-6 max-w-xl text-base leading-relaxed text-text-muted sm:text-lg">
+                {app.description}
+              </p>
+
+              <p class="mt-8 max-w-xl font-mono text-[0.625rem] uppercase leading-loose tracking-[0.16em] text-text-muted/80">
+                {app.features.map((feature, i) => (
+                  <span>
+                    {feature}
+                    {i < app.features.length - 1 && <span class="mx-2.5 text-accent">/</span>}
                   </span>
-                </div>
+                ))}
+              </p>
 
-                <p class="mt-1 text-sm font-medium text-text-muted">{app.fullName}</p>
+              <div class="mt-10 flex flex-wrap items-center gap-x-10 gap-y-5">
+                {app.buyPath && app.price ? (
+                  <a href={app.buyPath} class="link-arrow">
+                    Buy — {app.price}
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                ) : app.appStoreUrl ? (
+                  <a href={app.appStoreUrl} class="link-arrow" rel="noopener noreferrer" target="_blank">
+                    App Store
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                ) : (
+                  <span class="border border-border px-4 py-2 font-mono text-[0.625rem] uppercase tracking-[0.2em] text-text-muted">
+                    Coming soon
+                  </span>
+                )}
 
-                <p class="mt-4 text-lg leading-relaxed text-text-muted">{app.description}</p>
-
-                <ul class="mt-6 space-y-2">
-                  {app.features.map((feature) => (
-                    <li class="flex items-start gap-2 text-sm text-text-muted">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="mt-0.5 shrink-0 text-accent"
-                        aria-hidden="true"
-                      >
-                        <path d="M20 6 9 17l-5-5" />
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <div class="mt-8 flex flex-wrap items-center gap-3">
-                  {app.appStoreUrl ? (
-                    <a
-                      href={app.appStoreUrl}
-                      class="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-muted"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      Download on the App Store
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        aria-hidden="true"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                      </svg>
-                    </a>
-                  ) : (
-                    <span class="inline-flex items-center rounded-full border border-border bg-bg-elevated px-4 py-2 text-sm font-medium text-text-muted">
-                      Coming soon to the App Store
-                    </span>
-                  )}
+                <span class="flex gap-6 font-mono text-[0.625rem] uppercase tracking-[0.18em]">
                   <a
                     href={app.privacyPath}
-                    class="text-sm font-medium text-accent transition-colors hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+                    class="text-text-muted transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
                   >
                     Privacy
                   </a>
                   <a
                     href={app.termsPath}
-                    class="text-sm font-medium text-accent transition-colors hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+                    class="text-text-muted transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
                   >
                     Terms
                   </a>
-                </div>
+                </span>
               </div>
             </div>
-          </article>
-        ))
-      }
-    </div>
+          </div>
+        </article>
+      ))
+    }
   </div>
 </section>

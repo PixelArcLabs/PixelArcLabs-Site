@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  holodock,
+  holodockCheckoutUrlLive,
+  holodockCheckoutUrlTest,
+  holodockPrice,
+  holodockSandboxByDefault,
+  supportEmail,
+} from '../config/site';
+
+const buyHref = holodockSandboxByDefault
+  ? holodockCheckoutUrlTest
+  : holodockCheckoutUrlLive;
+
+const features = [
+  {
+    title: 'Dock peeks',
+    body: 'Hover any Dock icon to see open windows as live thumbnails — then click to activate.',
+  },
+  {
+    title: 'Keyboard first',
+    body: 'Arrow keys, Return, Esc, number shortcuts, and ⌃⌥Space for the frontmost app.',
+  },
+  {
+    title: 'Stay in flow',
+    body: 'Auto-hide Dock stays visible while you choose. Pause anytime from the menu bar.',
+  },
+  {
+    title: 'Private by design',
+    body: 'Titles and captures stay on your Mac. HoloDock doesn’t upload screen contents or usage data.',
+  },
+];
+---
+
+<BaseLayout
+  title={`HoloDock — ${holodockPrice} · Window peeks for your Mac Dock`}
+  description="HoloDock shows window previews when you hover Dock icons. A lightweight macOS menu-bar utility from Pixel Arc Labs — $9.99 one-time."
+  path="/holodock"
+>
+  <div
+    id="sandbox-banner"
+    class:list={[
+      'border-b border-amber-500/30 bg-amber-500/10',
+      !holodockSandboxByDefault && 'hidden',
+    ]}
+    data-sandbox-banner
+    role="status"
+  >
+    <div class="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-3 px-6 py-3 pt-[5.5rem] sm:pt-24">
+      <p class="text-sm text-amber-100/90">
+        <span class="font-semibold text-amber-200">Sandbox mode</span>
+        — Stripe test checkout. Use card
+        <code class="rounded bg-black/30 px-1.5 py-0.5 text-xs">4242 4242 4242 4242</code>
+        · any future expiry · any CVC.
+      </p>
+      <a
+        href="/holodock"
+        class="text-xs font-medium text-amber-200/90 underline-offset-2 hover:underline"
+        data-exit-sandbox
+      >
+        Exit sandbox
+      </a>
+    </div>
+  </div>
+
+  <section class="relative overflow-hidden border-b border-border/40">
+    <div class="hero-mesh absolute inset-0" aria-hidden="true"></div>
+    <div class="pixel-grid absolute inset-0 opacity-60" aria-hidden="true"></div>
+
+    <div class="relative mx-auto max-w-3xl px-6 pb-20 pt-32 sm:pb-28 sm:pt-40">
+      <p class="fade-in mb-4 font-mono text-[0.6875rem] uppercase tracking-[0.24em] text-text-muted">
+        macOS<span class="mx-3 text-accent">●</span>One-time purchase
+      </p>
+
+      <div class="fade-in-delay-1 flex flex-col items-start gap-8 sm:flex-row sm:items-center">
+        <img
+          src={holodock.iconSrc}
+          alt=""
+          width="112"
+          height="112"
+          class="h-28 w-28 shrink-0 rounded-[1.75rem] object-cover shadow-lg ring-1 ring-white/10"
+        />
+        <div class="min-w-0">
+          <h1 class="text-5xl font-semibold tracking-tight text-text sm:text-6xl">
+            {holodock.name}
+            <span class="block font-display text-3xl font-normal italic text-accent sm:text-4xl">{holodock.tagline}</span>
+          </h1>
+          <p class="mt-4 max-w-xl text-lg leading-relaxed text-text-muted">
+            Hover a Dock icon, peek open windows, and jump straight to the one you want.
+          </p>
+        </div>
+      </div>
+
+      <div class="fade-in-delay-2 mt-10 flex flex-wrap items-center gap-4">
+        <a
+          href={buyHref}
+          class="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-buy-link
+          data-live-url={holodockCheckoutUrlLive}
+          data-test-url={holodockCheckoutUrlTest}
+        >
+          Buy HoloDock — {holodockPrice}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+        <p class="text-sm text-text-muted" data-buy-note>
+          macOS 14+ · Instant download after purchase
+        </p>
+      </div>
+
+      <p class="fade-in-delay-3 mt-4 text-xs text-text-muted/70">
+        Testing?
+        <a href="/holodock?sandbox=1" class="text-accent hover:text-accent-hover" data-enter-sandbox>
+          Open sandbox checkout
+        </a>
+        · Support:
+        <a class="text-accent hover:text-accent-hover" href={`mailto:${supportEmail}`}>{supportEmail}</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="border-b border-border/40">
+    <div class="mx-auto max-w-3xl px-6 py-20 sm:py-24">
+      <h2 class="rule-label"><span class="text-accent">01</span>What you get</h2>
+      <ul class="mt-10 grid gap-px overflow-hidden border border-border sm:grid-cols-2">
+        {
+          features.map((feature, i) => (
+            <li class="bg-bg p-7 outline outline-1 outline-border">
+              <span class="font-mono text-[0.625rem] tracking-[0.2em] text-accent">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="mt-3 text-base font-semibold text-text">{feature.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-text-muted">{feature.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="border-b border-border/40">
+    <div class="mx-auto max-w-3xl px-6 py-20 sm:py-24">
+      <h2 class="rule-label"><span class="text-accent">02</span>Requirements</h2>
+      <div class="mt-8 space-y-4 text-sm leading-relaxed text-text-muted">
+        <p>
+          <span class="font-medium text-text">macOS 14 Sonoma or later</span> — Apple silicon and Intel.
+        </p>
+        <p>
+          On first launch you’ll grant
+          <span class="font-medium text-text"> Accessibility</span> (required for Dock peeks) and
+          optionally <span class="font-medium text-text">Screen Recording</span> for live thumbnails.
+          Captures never leave your Mac.
+        </p>
+      </div>
+
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <a
+          href={buyHref}
+          class="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-buy-link
+          data-live-url={holodockCheckoutUrlLive}
+          data-test-url={holodockCheckoutUrlTest}
+        >
+          Buy — {holodockPrice}
+        </a>
+        <a
+          href="/contact"
+          class="text-sm font-medium text-accent transition-colors hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
+        >
+          Questions? Contact support
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const sandbox =
+    params.has('sandbox') ||
+    params.get('mode') === 'test' ||
+    params.get('sandbox') === '1';
+
+  const banner = document.querySelector('[data-sandbox-banner]');
+  const buyLinks = document.querySelectorAll<HTMLAnchorElement>('[data-buy-link]');
+  const buyNote = document.querySelector('[data-buy-note]');
+
+  if (sandbox) {
+    banner?.classList.remove('hidden');
+    buyLinks.forEach((link) => {
+      const testUrl = link.dataset.testUrl;
+      if (testUrl) link.href = testUrl;
+    });
+    if (buyNote) {
+      buyNote.textContent = 'Sandbox · no real charge · test card 4242…';
+    }
+  }
+
+  document.querySelector('[data-exit-sandbox]')?.addEventListener('click', (event) => {
+    event.preventDefault();
+    const url = new URL(window.location.href);
+    url.searchParams.delete('sandbox');
+    url.searchParams.delete('mode');
+    window.location.href = url.pathname;
+  });
+</script>

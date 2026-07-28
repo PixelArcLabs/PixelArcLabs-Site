@@ -4,3 +4,65 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[functions."holodock-download"]
+  included_files = ["private/downloads/**"]
+
+# Bundle shared helpers for all HoloDock functions
+[functions."holodock-claim"]
+  included_files = ["netlify/functions/_lib/**"]
+
+[functions."holodock-status"]
+  included_files = ["netlify/functions/_lib/**"]
+
+[functions."holodock-webhook"]
+  included_files = ["netlify/functions/_lib/**"]
+
+[functions."holodock-verify"]
+  included_files = ["netlify/functions/_lib/**"]
+
+[functions."holodock-deactivate"]
+  included_files = ["netlify/functions/_lib/**"]
+
+[build.processing.html]
+  pretty_urls = false
+
+[[headers]]
+  for = "/.well-known/apple-app-site-association"
+  [headers.values]
+    Content-Type = "application/json"
+    Cache-Control = "public, max-age=300"
+
+[[headers]]
+  for = "/plaid/oauth"
+  [headers.values]
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/plaid/oauth/*"
+  [headers.values]
+    Cache-Control = "no-store"
+
+# Serve OAuth handoff at the exact Plaid redirect path (avoid trailing-slash bounce).
+[[redirects]]
+  from = "/plaid/oauth"
+  to = "/plaid/oauth.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/plaid/oauth/"
+  to = "/plaid/oauth.html"
+  status = 200
+  force = true
+
+# Old public DMG path — force purchase-gated download flow
+[[redirects]]
+  from = "/downloads/*"
+  to = "/holodock"
+  status = 302
+  force = true

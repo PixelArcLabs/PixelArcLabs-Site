@@ -1,4 +1,5 @@
 ---
+import BrandMark from './BrandMark.astro';
 import NavAppsMenu from './NavAppsMenu.astro';
 
 const navLinks = [
@@ -7,7 +8,7 @@ const navLinks = [
 ];
 
 const linkClass =
-  'text-sm text-text-muted transition-colors hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full px-1';
+  'font-mono text-[0.625rem] uppercase tracking-[0.16em] text-text-muted transition-colors hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-full px-1';
 ---
 
 <header
@@ -24,25 +25,7 @@ const linkClass =
       class="flex shrink-0 items-center justify-center rounded-full p-1.5 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       aria-label="Pixel Arc Labs home"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 32 32"
-        fill="none"
-        class="h-7 w-7"
-        aria-hidden="true"
-      >
-        <rect width="32" height="32" rx="8" fill="#12121a"></rect>
-        <path
-          d="M8 22 C8 14, 14 8, 22 8"
-          stroke="#1e74bd"
-          stroke-width="2.5"
-          stroke-linecap="round"
-          fill="none"></path>
-        <rect x="20" y="18" width="4" height="4" rx="1" fill="#1e74bd"></rect>
-        <rect x="14" y="18" width="4" height="4" rx="1" fill="#1e74bd" opacity="0.6"
-        ></rect>
-        <rect x="8" y="18" width="4" height="4" rx="1" fill="#1e74bd" opacity="0.3"></rect>
-      </svg>
+      <BrandMark class="h-[5.25rem] w-[5.25rem]" />
     </a>
 
     <ul class="flex min-w-0 flex-1 items-center justify-center gap-3">
@@ -68,7 +51,7 @@ const linkClass =
 
     <a
       href="/contact"
-      class="shrink-0 rounded-full bg-white/10 px-3 py-1.5 text-sm font-medium text-text transition-colors hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      class="shrink-0 rounded-full border border-border px-3 py-1.5 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-text transition-colors hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
     >
       Contact
     </a>
@@ -87,7 +70,7 @@ const linkClass =
         navLinks.map((link) => (
           <a
             href={link.href}
-            class="rounded-full px-4 py-1.5 text-sm text-text-muted transition-colors hover:bg-white/5 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            class="rounded-full px-4 py-1.5 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-text-muted transition-colors hover:bg-white/5 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             {link.label}
           </a>
@@ -97,28 +80,10 @@ const linkClass =
 
     <a
       href="/"
-      class="glass-pill pointer-events-auto flex items-center justify-center rounded-full p-2.5 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      class="pointer-events-auto flex items-center justify-center transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
       aria-label="Pixel Arc Labs home"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 32 32"
-        fill="none"
-        class="h-9 w-9"
-        aria-hidden="true"
-      >
-        <rect width="32" height="32" rx="8" fill="#12121a"></rect>
-        <path
-          d="M8 22 C8 14, 14 8, 22 8"
-          stroke="#1e74bd"
-          stroke-width="2.5"
-          stroke-linecap="round"
-          fill="none"></path>
-        <rect x="20" y="18" width="4" height="4" rx="1" fill="#1e74bd"></rect>
-        <rect x="14" y="18" width="4" height="4" rx="1" fill="#1e74bd" opacity="0.6"
-        ></rect>
-        <rect x="8" y="18" width="4" height="4" rx="1" fill="#1e74bd" opacity="0.3"></rect>
-      </svg>
+      <BrandMark class="h-[7.5rem] w-[7.5rem]" />
     </a>
 
     <nav
@@ -127,19 +92,19 @@ const linkClass =
     >
       <a
         href="/terms"
-        class="rounded-full px-4 py-1.5 text-sm text-text-muted transition-colors hover:bg-white/5 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        class="rounded-full px-4 py-1.5 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-text-muted transition-colors hover:bg-white/5 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         Terms
       </a>
       <a
         href="/privacy"
-        class="rounded-full px-4 py-1.5 text-sm text-text-muted transition-colors hover:bg-white/5 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        class="rounded-full px-4 py-1.5 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-text-muted transition-colors hover:bg-white/5 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         Privacy
       </a>
       <a
         href="/contact"
-        class="rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-text transition-colors hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        class="rounded-full border border-border px-4 py-1.5 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-text transition-colors hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         Contact
       </a>

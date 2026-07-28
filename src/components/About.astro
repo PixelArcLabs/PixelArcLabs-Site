@@ -1,26 +1,54 @@
 ---
+const principles = [
+  'Clarity over clutter',
+  'Thoughtful defaults over endless settings',
+  'Ship carefully, listen closely',
+  'Your data stays yours',
+];
 ---
 
-<section id="about" class="mx-auto max-w-3xl px-6 py-24 sm:py-28">
-  <h2 class="text-sm font-medium tracking-wide text-accent uppercase">About</h2>
+<section id="about" class="scroll-mt-28">
+  <div class="mx-auto max-w-5xl px-6 pt-24 sm:pt-32">
+    <h2 class="rule-label" data-reveal>
+      <span class="text-accent">02</span>
+      About
+    </h2>
 
-  <div class="mt-6 space-y-6 text-lg leading-relaxed text-text-muted">
-    <p>
-      Pixel Arc Labs is my independent studio — I build high-quality apps for iPhone and
-      iPad. I believe great software should feel effortless: fast, intuitive, and
-      respectful of your time and privacy.
-    </p>
+    <div class="mt-14 grid gap-14 pb-24 sm:grid-cols-[1.4fr_1fr] sm:gap-20 sm:pb-32">
+      <div data-reveal>
+        <p class="font-display text-3xl leading-snug text-text sm:text-4xl">
+          Great software should feel effortless — fast, intuitive, and
+          <em class="text-accent">respectful of your time.</em>
+        </p>
 
-    <p>
-      Every app I ship is designed with intention. I prioritize clarity over clutter,
-      thoughtful defaults over endless settings, and experiences that work beautifully
-      on day one.
-    </p>
+        <div class="mt-10 max-w-xl space-y-6 text-base leading-relaxed text-text-muted">
+          <p>
+            Pixel Arc Labs is my independent studio. I design and build every app
+            myself, for Mac, iPhone, and iPad — with intention, not committees.
+          </p>
+          <p>
+            I work solo with a long-term mindset: ship carefully, listen closely,
+            and keep improving. If you use one of my apps, your feedback directly
+            shapes what I build next.
+          </p>
+        </div>
+      </div>
 
-    <p>
-      I work solo with a long-term mindset: ship carefully, listen closely, and keep
-      improving. If you use one of my apps, your feedback directly shapes what I build
-      next.
-    </p>
+      <div data-reveal>
+        <p class="font-mono text-[0.625rem] uppercase tracking-[0.22em] text-text-muted">Principles</p>
+        <ul class="mt-6">
+          {
+            principles.map((principle, i) => (
+              <li class="flex items-baseline gap-4 border-t border-border py-4 last:border-b">
+                <span class="font-mono text-[0.625rem] tracking-[0.18em] text-accent">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span class="text-sm text-text">{principle}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
   </div>
 </section>

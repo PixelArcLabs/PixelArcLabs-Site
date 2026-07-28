@@ -22,3 +22,17 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Local Netlify folder
+.netlify
+
+# Cloudflare
+.wrangler
+.dev.vars
+
+# Local binaries / private assets (served from KV)
+private/
+public/holodock/updates/*.dmg
+.agents/
+skills-lock.json
+supabase/.temp/

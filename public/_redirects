@@ -1,0 +1,3 @@
+/plaid/oauth  /plaid/oauth.html  200
+/plaid/oauth/  /plaid/oauth.html  200
+/downloads/*  /holodock  302
