@@ -6,7 +6,6 @@ import {
   holodockCheckoutUrlTest,
   holodockPrice,
   holodockSandboxByDefault,
-  supportEmail,
 } from '../config/site';
 
 const buyHref = holodockSandboxByDefault
@@ -123,15 +122,6 @@ const features = [
           macOS 14+ · Instant download after purchase
         </p>
       </div>
-
-      <p class="fade-in-delay-3 mt-4 text-xs text-text-muted/70">
-        Testing?
-        <a href="/holodock?sandbox=1" class="text-accent hover:text-accent-hover" data-enter-sandbox>
-          Open sandbox checkout
-        </a>
-        · Support:
-        <a class="text-accent hover:text-accent-hover" href={`mailto:${supportEmail}`}>{supportEmail}</a>
-      </p>
     </div>
   </section>
 
